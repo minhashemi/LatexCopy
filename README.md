@@ -10,7 +10,7 @@ Have you ever tried to copy a complex mathematical formula from an AI chat or a 
 
 It works by finding the message container you're interacting with, extracting all LaTeX formulas (both inline and display), and copying them to your clipboard.
 
-![Extension Demo](https://s6.uplod.ir/i/01165/efamxamhd3bg.png)
+![Extension Demo](/DEMO/demo.png)
 ### Features
 
 * **Finds All Formulas:** Intelligently locates all LaTeX formulas (`$$...$$` and `$....$`) within a specific message block.
@@ -38,12 +38,12 @@ These instructions are for Google Chrome, but the process is nearly identical fo
     * Open your Chrome-based browser.
     * Navigate to the extensions page by typing `chrome://extensions` in your address bar and pressing Enter.
     * In the top-right corner of the page, turn on the **Developer mode** toggle switch.
-        ![Developer Mode Toggle](https://s6.uplod.ir/i/01165/cjeoqaluyexa.png)
+        ![Developer Mode Toggle](/DEMO/dev.png)
     * Three new buttons will appear. Click on **Load unpacked**.
-        ![Load Unpacked](https://s6.uplod.ir/i/01165/fgi5fvrjya03.png)
+        ![Load Unpacked](/DEMO/load.png)
     * A file selection dialog will open. Navigate to and select the unzipped folder from Step 2 (the one that contains `manifest.json`).
     * The "LaTeX Content Copier" extension will now appear in your list of extensions and is ready to use!
-        ![Extension installed](https://s6.uplod.ir/i/01165/07bgc7abnvg8.png)
+        ![Extension installed](/DEMO/install.png)
 
 
     
