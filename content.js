@@ -5,25 +5,20 @@ document.addEventListener('mouseover', function(event) {
         return;
     }
 
-    let latexSource = null; // Use null to indicate "not found yet"
+    let latexSource = '';
 
-    // --- Logic for KaTeX sites ---
     if (target.classList.contains('katex')) {
-
-        // Method 1: Check for the standard annotation tag (for ChatGPT, etc.)
-        const annotation = target.querySelector('annotation[encoding="application/x-tex"]');
+        // standard annotation
+        const annotation = target.querySelector('.katex-mathml annotation[encoding="application/x-tex"]');
         if (annotation) {
             latexSource = annotation.textContent;
         }
-
-        // TODO: We will add one more check here for Gemini once we find the attribute name.
-        // For example, if the attribute is named 'data-latex', we will add:
-        // else if (target.dataset.latex) {
-        //     latexSource = target.dataset.latex;
-        // }
-
+        // 'data-equation'
+        else if (target.dataset.equation) {
+            latexSource = target.dataset.equation;
+        }
     }
-    // --- Logic for MathJax sites ---
+    // MathJax
     else if (target.classList.contains('MathJax')) {
         const script = target.previousElementSibling;
         if (script && script.tagName === 'SCRIPT' && script.type.includes('math/tex')) {
@@ -31,7 +26,6 @@ document.addEventListener('mouseover', function(event) {
         }
     }
 
-    // If we found the source code, create the overlay
     if (latexSource) {
         if (document.getElementById('latex-copier-overlay')) return;
         createOverlay(target, latexSource);
@@ -44,7 +38,8 @@ function createOverlay(element, latex) {
     overlay.textContent = 'Copy LaTeX';
     document.body.appendChild(overlay);
 
-    overlay.addEventListener('click', function() {
+    overlay.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent the click from bubbling up
         navigator.clipboard.writeText(latex).then(function() {
             overlay.textContent = 'Copied!';
             setTimeout(() => {
@@ -59,19 +54,24 @@ function createOverlay(element, latex) {
     });
 
     const rect = element.getBoundingClientRect();
-    overlay.style.left = `${rect.left + window.scrollX}px`;
-    overlay.style.top = `${rect.top + window.scrollY - overlay.offsetHeight - 5}px`;
+
+    const targetCenterX = rect.left + rect.width / 2;
+    const targetCenterY = rect.top + rect.height / 2;
+
+    overlay.style.left = `${window.scrollX + targetCenterX - (overlay.offsetWidth / 2)}px`;
+    overlay.style.top = `${window.scrollY + targetCenterY - (overlay.offsetHeight * 3/2)}px`;
 
     const handleMouseLeave = () => {
         setTimeout(() => {
-            if (!overlay.matches(':hover') && !element.matches(':hover')) {
-                 if (document.body.contains(overlay)) {
-                    document.body.removeChild(overlay);
+            const overlayElement = document.getElementById('latex-copier-overlay');
+            if (overlayElement && !overlayElement.matches(':hover') && !element.matches(':hover')) {
+                 if (document.body.contains(overlayElement)) {
+                    document.body.removeChild(overlayElement);
                 }
             }
         }, 100);
     };
 
     element.addEventListener('mouseleave', handleMouseLeave);
-    overlay.addEventListener('mouseleave', handleMouseLeave);
+    document.getElementById('latex-copier-overlay').addEventListener('mouseleave', handleMouseLeave);
 }
