@@ -1,84 +1,105 @@
 # LaTeX Content Copier
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg) ![Version](https://img.shields.io/badge/version-1.0-brightgreen)
+A browser extension that copies the underlying LaTeX code from rendered math on websites, including modern AI chat interfaces like ChatGPT, Gemini, Claude, and Perplexity.
 
-A simple browser extension to solve a common frustration: easily copying the original source code of rendered LaTeX equations from modern web apps like ChatGPT, and more.
+## Features
 
-## About The Project
+- **Multi-platform Support**: Works with ChatGPT, Gemini, Claude, Perplexity, and traditional math websites
+- **Smart Detection**: Automatically detects LaTeX content in various formats:
+  - MathJax and KaTeX rendering
+  - Custom AI chat interfaces
+  - Image-based LaTeX renders
+  - Dynamic content loading
+- **Easy Copy**: Hover over any math content to see a "Copy LaTeX" button
+- **One-click Copy**: Click the button to copy LaTeX code to clipboard
+- **Real-time Updates**: Automatically detects new content as it loads
 
-Have you ever tried to copy a complex mathematical formula from an AI chat or a technical blog, only to get garbled, unreadable text? This extension restores sanity by allowing you to grab the clean, original LaTeX source code from an entire message block with a single click.
+## Supported Platforms
 
-It works by finding the message container you're interacting with, extracting all LaTeX formulas (both inline and display), and copying them to your clipboard.
+### AI Chat Interfaces
+- **ChatGPT** (chat.openai.com) ✅
+- **Google Gemini** (g.co/gemini/*, gemini.google.com) ✅
+- **Claude** (claude.ai) ✅
+- **Perplexity** (perplexity.ai) ✅
 
-![Extension Demo](/DEMO/demo.png)
-### Features
+### Traditional Math Sites
+- **MathJax-powered sites** ✅
+- **KaTeX-powered sites** ✅
+- **Sites with custom math rendering** ✅
 
-* **Finds All Formulas:** Intelligently locates all LaTeX formulas (`$$...$$` and `$....$`) within a specific message block.
-* **Simple Interface:** Displays a clean "Copy LaTeX" button when you hover over a formula.
-* **Broad Compatibility:** Works on modern websites that use KaTeX or MathJax for rendering, including AI chat platforms.
+## How It Works
 
-## Getting Started
+1. **Install the extension** in your browser
+2. **Navigate to any supported site** (ChatGPT, Gemini, etc.)
+3. **Hover over math content** - you'll see a "Copy LaTeX" button appear
+4. **Click the button** to copy the LaTeX source code to your clipboard
+5. **Paste anywhere** you need the LaTeX code
 
-Since this extension is not yet published on the official web stores, you will need to install it manually using your browser's Developer Mode.
+## Installation
 
-### Manual Installation Instructions
+### Chrome/Edge/Brave
+1. Download the extension files
+2. Go to `chrome://extensions/`
+3. Enable "Developer mode"
+4. Click "Load unpacked" and select the extension folder
 
-These instructions are for Google Chrome, but the process is nearly identical for other Chromium-based browsers like **Arc**, **Microsoft Edge**, and **Brave**.
+### Firefox
+1. Download the extension files
+2. Go to `about:debugging#/runtime/this-firefox`
+3. Click "Load Temporary Add-on" and select `manifest.json`
 
-1.  **Download the Files:**
-    * Go to the main page of this GitHub repository.
-    * Click the green `<> Code` button.
-    * Select **Download ZIP**.
+## Technical Details
 
-2.  **Unzip the Folder:**
-    * Find the downloaded `.zip` file on your computer (usually in your `Downloads` folder).
-    * Unzip or extract the folder. You should now have a folder named `latex-copier-extension-main` (or similar).
+The extension uses multiple detection methods to find LaTeX content:
 
-3.  **Load the Extension in Your Browser:**
-    * Open your Chrome-based browser.
-    * Navigate to the extensions page by typing `chrome://extensions` in your address bar and pressing Enter.
-    * In the top-right corner of the page, turn on the **Developer mode** toggle switch.
-        ![Developer Mode Toggle](/DEMO/dev.png)
-    * Three new buttons will appear. Click on **Load unpacked**.
-        ![Load Unpacked](/DEMO/load.png)
-    * A file selection dialog will open. Navigate to and select the unzipped folder from Step 2 (the one that contains `manifest.json`).
-    * The "LaTeX Content Copier" extension will now appear in your list of extensions and is ready to use!
-        ![Extension installed](/DEMO/install.png)
+- **Direct Detection**: Looks for standard MathJax/KaTeX elements
+- **Data Attributes**: Searches for `data-latex` and `data-math` attributes
+- **Class Patterns**: Identifies elements with math-related class names
+- **Context Analysis**: Examines surrounding elements for LaTeX content
+- **Image Analysis**: Checks alt text and context for image-based renders
+- **Dynamic Content**: Uses MutationObserver to detect newly loaded content
 
+## Version History
 
-    
+### v2.1 (Current)
+- Added support for Google Gemini
+- Enhanced detection for modern AI chat interfaces
+- Improved dynamic content detection
+- Added support for image-based LaTeX renders
+- Better context analysis for complex layouts
 
-## How to Use
+### v2.0
+- Initial release with ChatGPT support
+- Basic MathJax and KaTeX detection
 
-1.  Navigate to a website that has rendered LaTeX (e.g., a conversation in ChatGPT).
-2.  Hover your mouse over any part of a mathematical formula.
-3.  A "Copy LaTeX" button will appear above the formula.
-4.  Click the button. All formulas found in that specific message block will be copied to your clipboard, separated by newlines.
+## Troubleshooting
 
-## To-Do / Future Features
+### Extension not working on Gemini?
+1. Make sure you're on a Gemini page (g.co/gemini/* or gemini.google.com)
+2. Try refreshing the page
+3. Check if the extension is enabled
+4. Look for any console errors
 
-This is a list of potential improvements and features for the future:
+### Not detecting LaTeX content?
+1. Verify the content is actually LaTeX (not just text)
+2. Try hovering over different parts of the math content
+3. Check if the site is in the supported list
+4. Ensure the extension has the necessary permissions
 
--   [ ] **Single Formula Copy:** Add an option (perhaps with a modifier key like `Alt`+`Click`) to copy only the specific formula being hovered over, instead of all formulas in the block.
--   [ ] **Options Page:** Create a settings page where users can:
-    -   Customize the appearance of the copy button (color, text).
-    -   Configure the format of the copied text (e.g., change the newline separator).
--   [ ] **Improve Website Compatibility:** Add and test selectors for more websites that use LaTeX and specifically Gemini.
--   [ ] **Visual Feedback:** Make the "Copied!" confirmation more visually prominent.
--   [ ] **Store Publication:** Complete the process to publish on the Chrome Web Store and Firefox Browser Add-ons store.
+### Copy button not appearing?
+1. Make sure you're hovering over math content
+2. Check if another copy button is already visible
+3. Try moving your mouse around the math area
+4. Refresh the page and try again
 
 ## Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+Feel free to submit issues, feature requests, or pull requests to improve the extension!
 
 ## License
 
-Distributed under the MIT License. See the `LICENSE` file for more information.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+If you're having issues or want to request support for a new platform, please open an issue on the GitHub repository.

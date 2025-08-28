@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX Copier Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .math-content {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #007acc;
+        }
+        .inline-math {
+            background: #e8f4fd;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 0 5px;
+        }
+        .equation-block {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .instructions h4 {
+            margin-top: 0;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <h1>LaTeX Copier Extension Test Page</h1>
+    
+    <div class="instructions">
+        <h4>Testing Instructions:</h4>
+        <p>1. Make sure the LaTeX Copier extension is installed and enabled</p>
+        <p>2. Hover over the math content below to see the "Copy LaTeX" button</p>
+        <p>3. Click the button to copy the LaTeX source code</p>
+        <p>4. Test with different types of math content</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 1: Inline Math with Class Names</h3>
+        <p>Here is some text with <span class="math inline-math">x^2 + y^2 = z^2</span> inline math and another <span class="latex inline-math">\frac{a}{b}</span> expression.</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 2: Data Attributes</h3>
+        <div class="math-content" data-latex="\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}">
+            <p>This element has a data-latex attribute with the Gaussian integral.</p>
+        </div>
+        <div class="equation" data-math="E = mc^2">
+            <p>This element has a data-math attribute with Einstein's equation.</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 3: Class Pattern Matching</h3>
+        <div class="math-renderer">
+            <p>This element has a class that includes "math"</p>
+        </div>
+        <div class="latex-display">
+            <p>This element has a class that includes "latex"</p>
+        </div>
+        <div class="equation-block">
+            <p>This element has a class that includes "equation"</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 4: Alt Text and Title Attributes</h3>
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjUwIj48dGV4dCB4PSI1MCIgeT0iMjUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oiSPC90ZXh0Pjwvc3ZnPg==" 
+             alt="\sum_{i=1}^{n} x_i" 
+             title="\sum_{i=1}^{n} x_i"
+             style="border: 1px solid #ccc; padding: 10px;">
+        <p>This image has LaTeX in its alt text and title attributes.</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 5: Context Analysis</h3>
+        <div class="math-container">
+            <p>This container has math-related content.</p>
+            <span>Some text here</span>
+            <div class="content">
+                <p>More content</p>
+                <span>And here we have \alpha + \beta = \gamma</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 6: Dynamic Content</h3>
+        <div id="dynamic-content">
+            <p>This content will be dynamically updated to test the extension's ability to detect new LaTeX content.</p>
+        </div>
+        <button onclick="addDynamicContent()">Add Dynamic Math Content</button>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 7: Complex Nested Structure</h3>
+        <div class="chat-message">
+            <div class="message-content">
+                <p>Here's a complex mathematical expression:</p>
+                <div class="math-block">
+                    <div class="renderer">
+                        <span class="symbol">∫</span>
+                        <span class="expression">f(x) dx</span>
+                    </div>
+                </div>
+                <p>And another one: <span class="inline">\sqrt{a^2 + b^2}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 8: Complex LaTeX Expressions</h3>
+        <div class="math-content">
+            <p>Complex fraction: <span class="math">\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = 0</span></p>
+        </div>
+        <div class="equation">
+            <p>Integral with limits: <span class="math">\int_{0}^{\infty} \frac{\sin(x)}{x} dx = \frac{\pi}{2}</span></p>
+        </div>
+        <div class="latex">
+            <p>Matrix: <span class="math">\begin{pmatrix} a & b \\ c & d \end{pmatrix}</span></p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 9: Incomplete LaTeX (Should Expand)</h3>
+        <div class="math-content">
+            <p>Incomplete expression: <span class="math">\frac{1}</span> should expand to show the complete formula.</p>
+        </div>
+        <div class="equation">
+            <p>Another incomplete: <span class="math">\int_{0}^{1}</span> should show the complete integral.</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test 10: Mixed Content with LaTeX</h3>
+        <div class="chat-message">
+            <div class="message-content">
+                <p>Here's a response with multiple math expressions:</p>
+                <p>The quadratic formula is: <span class="math">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</span></p>
+                <p>And the derivative: <span class="math">\frac{d}{dx}[x^n] = nx^{n-1}</span></p>
+                <p>Finally, a sum: <span class="math">\sum_{k=1}^{n} k = \frac{n(n+1)}{2}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addDynamicContent() {
+            const container = document.getElementById('dynamic-content');
+            const newContent = document.createElement('div');
+            newContent.className = 'math-content';
+            newContent.innerHTML = `
+                <p>New dynamic content added!</p>
+                <div class="equation" data-latex="\\frac{d}{dx}\\left(\\int_0^x f(t) dt\\right) = f(x)">
+                    <p>This is the Fundamental Theorem of Calculus</p>
+                </div>
+                <div class="math">
+                    <p>Complex expression: <span class="math">\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}</span></p>
+                </div>
+            `;
+            container.appendChild(newContent);
+        }
+
+        // Simulate dynamic content loading
+        setTimeout(() => {
+            const container = document.getElementById('dynamic-content');
+            const autoContent = document.createElement('div');
+            autoContent.className = 'math-content';
+            autoContent.innerHTML = `
+                <p>Auto-loaded content:</p>
+                <span class="math">\\lim_{x \\to \\infty} \\frac{1}{x} = 0</span>
+                <p>And a matrix: <span class="math">\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc</span></p>
+            `;
+            container.appendChild(autoContent);
+        }, 3000);
+    </script>
+</body>
+</html>
