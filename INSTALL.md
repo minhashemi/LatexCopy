@@ -4,48 +4,46 @@
 - A modern web browser (Chrome, Edge, Brave, Firefox)
 - Basic computer skills
 
-## Method 1: Chrome/Edge/Brave (Recommended)
+## 🚀 **Universal Installation (Recommended)**
 
-### Step 1: Download the Extension
+### **Step 1: Download the Extension**
 1. Click the green "Code" button on this GitHub repository
 2. Select "Download ZIP"
 3. Extract the ZIP file to a folder on your computer
 4. Remember the location of this folder
 
-### Step 2: Enable Developer Mode
+### **Step 2: Install in Your Browser**
+
+#### **For Chrome/Edge/Brave:**
 1. Open your browser
 2. Type `chrome://extensions/` in the address bar and press Enter
 3. In the top-right corner, toggle on "Developer mode"
-4. You'll see three new buttons appear
+4. Click "Load unpacked"
+5. Navigate to the folder you extracted in Step 1
+6. Select the folder (not individual files)
+7. Click "Select Folder"
 
-### Step 3: Load the Extension
-1. Click "Load unpacked"
-2. Navigate to the folder you extracted in Step 1
-3. Select the folder (not individual files)
-4. Click "Select Folder"
-
-### Step 4: Verify Installation
-1. You should see "LaTeX Content Copier" in your extensions list
-2. The extension should show as "Enabled"
-3. You may see a small icon in your browser toolbar
-
-## Method 2: Firefox
-
-### Step 1: Download the Extension
-1. Click the green "Code" button on this GitHub repository
-2. Select "Download ZIP"
-3. Extract the ZIP file to a folder on your computer
-
-### Step 2: Load Temporary Add-on
+#### **For Firefox:**
 1. Open Firefox
-2. Type `about:debugging#/runtime/this-firefox` in the address bar
+2. Type `about:debugging#/runtime/this-firefox` in the address bar and press Enter
 3. Click "Load Temporary Add-on"
-4. Navigate to the extracted folder and select `manifest.json`
-5. Click "Open"
+4. Navigate to the folder you extracted in Step 1
+5. Select `manifest-firefox.json`
+6. Click "Open"
 
-### Step 3: Verify Installation
-1. You should see the extension listed under "Temporary Extensions"
-2. The extension will work until you restart Firefox
+### **Step 3: Verify Installation**
+1. You should see the LaTeX Content Copier extension in your extensions list
+2. The extension icon should appear in your browser toolbar
+3. Click the icon to see the popup
+
+## 🔍 **Browser Detection Helper**
+
+**Want to know which manifest to use?** Open `browser-detect.js` in your browser to see:
+- Which browser you're using
+- Which manifest is recommended
+- Universal manifest option
+
+**Quick way**: Just drag and drop `browser-detect.js` into any browser tab!
 
 ## Testing the Installation
 
