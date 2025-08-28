@@ -1,14 +1,11 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "LaTeX Content Copier",
   "version": "2.1",
   "description": "Copies the underlying LaTeX code from rendered math on websites including ChatGPT, Gemini, and other AI chat interfaces.",
   "permissions": [
     "activeTab",
-    "scripting",
-    "clipboardWrite"
-  ],
-  "host_permissions": [
+    "clipboardWrite",
     "https://g.co/*",
     "https://gemini.google.com/*",
     "https://chat.openai.com/*",
@@ -35,8 +32,13 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
-  "action": {
+  "browser_action": {
     "default_popup": "popup.html",
     "default_title": "LaTeX Content Copier"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "latex-copier@extension.com"
+    }
   }
 }
