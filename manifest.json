@@ -1,18 +1,33 @@
 {
   "manifest_version": 3,
   "name": "LaTeX Content Copier",
-  "version": "2.0",
-  "description": "Copies the underlying LaTeX code from rendered math on websites.",
+  "version": "2.1",
+  "description": "Copies the underlying LaTeX code from rendered math on websites including ChatGPT, Gemini, and other AI chat interfaces.",
   "permissions": [
     "activeTab",
     "scripting",
     "clipboardWrite"
   ],
+  "host_permissions": [
+    "https://g.co/*",
+    "https://gemini.google.com/*",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*",
+    "https://perplexity.ai/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": [
+        "<all_urls>",
+        "https://g.co/*",
+        "https://gemini.google.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://perplexity.ai/*"
+      ],
       "js": ["content.js"],
-      "css": ["styles.css"]
+      "css": ["styles.css"],
+      "run_at": "document_end"
     }
   ],
   "action": {
